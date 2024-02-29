@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess the Number Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<h1>Guess the Number Game</h1>
+<br><br>
+
+<p style="color: gray;">I'm thinking of a number between 1 and 100. Can you guess what it is?</p>
+<br>
+<input type="number" id="userGuess" placeholder="Enter your guess">
+<br><br>
+
+<button style="color: rgb(51, 82, 92);" onclick="checkGuess()">Submit Guess</button>
+<p id="feedback"></p>
+
+<script>
+    
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    function checkGuess() {
+        
+        const userGuess = parseInt(document.getElementById("userGuess").value);
+
+        
+        const feedback = document.getElementById("feedback");
+
+        
+        if (userGuess === randomNumber) {
+            feedback.textContent = "Congratulations! You guessed the correct number!";
+        } else if (userGuess < randomNumber) {
+            feedback.textContent = "Too low. Try again!";
+        } else {
+            feedback.textContent = "Too high. Try again!";
+        }
+
+        
+        document.getElementById("userGuess").value = "";
+    }
+</script>
+</body>
+</html>
